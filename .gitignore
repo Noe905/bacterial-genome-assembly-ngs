@@ -1,0 +1,64 @@
+# =========================
+# Datos crudos
+# =========================
+raw/
+
+# Lecturas
+*.fastq
+*.fastq.gz
+*.fq
+*.fq.gz
+
+# =========================
+# Alineamientos
+# =========================
+*.sam
+*.bam
+*.bai
+
+# =========================
+# Archivos grandes de procesamiento
+# =========================
+trim/*.fastq.gz
+
+# SPAdes (intermedios pesados)
+assembly/spades/tmp/
+assembly/spades/corrected/
+assembly/spades/*.fastg
+assembly/spades/*.gfa
+
+# Mapping pesado
+assembly/mapping/*.bam
+assembly/mapping/*.sam
+assembly/mapping/*.bai
+
+# =========================
+# Logs y temporales
+# =========================
+*.log
+*.tmp
+*.swp
+*~
+
+# =========================
+# Python
+# =========================
+__pycache__/
+*.pyc
+
+# =========================
+# SPAdes (ignorar TODO menos resultados finales)
+# =========================
+assembly/spades/*
+!assembly/spades/contigs.fasta
+!assembly/spades/scaffolds.fasta
+
+# Índices de BWA (innecesarios)
+*.amb
+*.ann
+*.bwt
+*.pac
+*.sa
+
+# FastQC zip (pesado)
+*.zip
