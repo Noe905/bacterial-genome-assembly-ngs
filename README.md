@@ -1,41 +1,68 @@
-# NCBI Datasets
+# Bacterial Genome Assembly and Annotation (NGS)
 
-https://www.ncbi.nlm.nih.gov/datasets
+## Overview
+This project performs a complete NGS analysis workflow for a bacterial genome, including quality control, trimming, de novo assembly, evaluation, annotation, and resistance gene detection.
 
-This zip archive contains an NCBI Datasets Data Package.
+## Workflow
 
-NCBI Datasets Data Packages can include sequence, annotation and other data files, and metadata in one or more data report files.
-Data report files are in JSON Lines format.
+1. **Quality Control**
+   - Tool: FastQC
+   - Input: Raw reads (FASTQ)
 
----
-## FAQs
-### Where is the data I requested?
+2. **Read Trimming**
+   - Tool: fastp
+   - Output: Clean reads
 
-Your data is in the subdirectory `ncbi_dataset/data/` contained within this zip archive.
+3. **De novo Assembly**
+   - Tool: SPAdes
+   - Output: contigs.fasta
 
-### I still can't find my data, can you help?
+4. **Assembly Evaluation**
+   - Tool: QUAST
+   - Metrics: N50, contig count, genome size
 
-We have identified a bug affecting Mac Safari users. When downloading data from the NCBI Datasets web interface, you may see only this README file after the download has completed (while other files appear to be missing).
-As a workaround to prevent this issue from recurring, we recommend disabling automatic zip archive extraction in Safari until Apple releases a bug fix.
-For more information, visit:
-https://www.ncbi.nlm.nih.gov/datasets/docs/reference-docs/mac-zip-bug/
+5. **Genome Annotation**
+   - Tool: Prokka
+   - Output: GFF, GBK, protein sequences
 
-### How do I work with JSON Lines data reports?
-
-Visit our JSON Lines data report documentation page:
-https://www.ncbi.nlm.nih.gov/datasets/docs/v2/tutorials/working-with-jsonl-data-reports/
-
-### What is NCBI Datasets?
-
-NCBI Datasets is a resource that lets you easily gather data from across NCBI databases. Find and download gene, transcript, protein and genome sequences, annotation and metadata.
-
-### Where can I find NCBI Datasets documentation?
-
-Visit the NCBI Datasets documentation pages:
-https://www.ncbi.nlm.nih.gov/datasets/docs/
+6. **Resistance and Virulence Analysis**
+   - Tool: ABRicate
+   - Databases: CARD, VFDB, BacMet
 
 ---
 
-National Center for Biotechnology Information
-National Library of Medicine
-info@ncbi.nlm.nih.gov
+## Key Results
+
+- Assembly generated using SPAdes
+- Evaluation performed with QUAST
+- Genome annotated with Prokka
+- Resistance genes identified:
+  - AAC(6')-Iaa
+  - MdtK
+
+
+---
+
+## Notes
+
+- Assembly fragmentation may affect gene detection.
+- Results are dependent on coverage and assembly quality.
+
+___
+
+## Repository Structure
+
+actv2/
+├── assembly/
+│ ├── spades/
+│ └── quast/
+├── annotation/
+├── raw/
+├── trim/
+├── results/
+├── ncbi_dataset/
+├── contig_lengths.txt
+├── md5sum.txt
+├── README.md
+├── Actividad2_Octubre2025_Enunciado.docx---
+
